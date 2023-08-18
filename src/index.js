@@ -3,7 +3,7 @@ import SlimSelect from 'slim-select';
 import '/node_modules/slim-select/dist/slimselect.css';
 import Notiflix from 'notiflix';
 
-import './css/styles.css';
+import './styles.css';
 
 const ref = {
   selectEl: document.querySelector('.breed-select'),
