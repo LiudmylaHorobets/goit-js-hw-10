@@ -18,7 +18,7 @@ export function fetchBreeds() {
     })
     .then(resp => {
       if (!resp.data) {
-        throw new Error('No data received');
+        throw new Error('Oops! Something went wrong! Try reloading the page!');
       }
       return resp.data;
     })
@@ -37,7 +37,7 @@ export function fetchCatByBreed(breedId) {
     })
     .then(resp => {
       if (!resp.data) {
-        throw new Error('No data received');
+        throw new Error('Oops! Something went wrong! Try reloading the page!');
       }
       return resp.data;
     })
