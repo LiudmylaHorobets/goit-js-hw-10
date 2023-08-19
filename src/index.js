@@ -22,15 +22,36 @@ fetchBreeds()
     ref.selectEl.innerHTML = createMarkup(data);
     slimSelect();
     ref.selectEl.classList.remove('is-hidden');
-    ref.loaderEl.classList.replace('loader', 'is-hidden');
+    ref.loaderEl.classList.add('is-hidden');
   })
   .catch(fetchError);
 
 ref.selectEl.addEventListener('change', getBreed);
 
+// function getBreed(event) {
+//   ref.selectEl.classList.add('is-hidden');
+//   ref.loaderEl.classList.replace('is-hidden', 'loader');
+//   ref.catInfoEl.classList.add('is-hidden');
+
+//   const breedId = event.currentTarget.value;
+
+//   fetchCatByBreed(breedId)
+//     .then(data => {
+//       ref.selectEl.classList.remove('is-hidden');
+//       ref.loaderEl.classList.replace('loader', 'is-hidden');
+
+//       createMarkupCard(data);
+
+//       ref.catInfoEl.classList.remove('is-hidden');
+//     })
+//     .catch(fetchError);
+// }
+
+// виправлений код ====================
+
 function getBreed(event) {
   ref.selectEl.classList.add('is-hidden');
-  ref.loaderEl.classList.replace('is-hidden', 'loader');
+  ref.loaderEl.classList.remove('is-hidden');
   ref.catInfoEl.classList.add('is-hidden');
 
   const breedId = event.currentTarget.value;
@@ -38,13 +59,23 @@ function getBreed(event) {
   fetchCatByBreed(breedId)
     .then(data => {
       ref.selectEl.classList.remove('is-hidden');
-      ref.loaderEl.classList.replace('loader', 'is-hidden');
+      ref.loaderEl.classList.add('is-hidden');
+
+      if (data.length === 0) {
+        ref.catInfoEl.innerHTML =
+          'There is no data for this breed, try another one';
+        ref.catInfoEl.classList.add('is-hidden');
+        return;
+      }
 
       createMarkupCard(data);
 
       ref.catInfoEl.classList.remove('is-hidden');
     })
-    .catch(fetchError);
+    .catch(() => {
+      ref.loaderEl.classList.add('is-hidden');
+      fetchError();
+    });
 }
 function createMarkup(arr) {
   return arr
