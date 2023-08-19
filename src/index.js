@@ -64,7 +64,7 @@ function getBreed(event) {
       if (data.length === 0) {
         ref.catInfoEl.innerHTML =
           'There is no data for this breed, try another one';
-        ref.catInfoEl.classList.add('is-hidden');
+        // ref.catInfoEl.classList.add('is-hidden');
         return;
       }
 
