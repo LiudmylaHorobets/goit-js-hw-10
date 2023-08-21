@@ -17,7 +17,6 @@ ref.selectEl.classList.add('is-hidden');
 ref.errorEl.classList.add('is-hidden');
 ref.catInfoEl.classList.add('is-hidden');
 
-
 fetchBreeds()
   .then(data => {
     ref.selectEl.innerHTML = createMarkup(data);
@@ -62,17 +61,16 @@ function getBreed(event) {
       ref.selectEl.classList.remove('is-hidden');
       ref.loaderEl.classList.add('is-hidden');
 
-      if (data.length === 0) {
-        ref.catInfoEl.innerHTML =
-          'There is no data for this breed, try another one';
-        // ref.catInfoEl.classList.add('is-hidden');
-        return;
-      }
-
       createMarkupCard(data);
 
       ref.catInfoEl.classList.remove('is-hidden');
+      if (data.length === 0) {
+        ref.catInfoEl.innerHTML =
+          'There is no data for this breed, try another one';
+        return;
+      }
     })
+
     .catch(() => {
       ref.loaderEl.classList.add('is-hidden');
       fetchError();
