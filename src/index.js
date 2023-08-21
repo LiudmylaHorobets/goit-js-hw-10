@@ -13,9 +13,10 @@ const ref = {
 };
 
 ref.selectEl.classList.add('is-hidden');
-ref.loaderEl.textContent = '';
+// ref.loaderEl.textContent = '';
 ref.errorEl.classList.add('is-hidden');
 ref.catInfoEl.classList.add('is-hidden');
+
 
 fetchBreeds()
   .then(data => {
@@ -51,7 +52,7 @@ ref.selectEl.addEventListener('change', getBreed);
 
 function getBreed(event) {
   ref.selectEl.classList.add('is-hidden');
-  ref.loaderEl.classList.remove('is-hidden');
+  ref.loaderEl.classList.remove('is-hidden', 'loader');
   ref.catInfoEl.classList.add('is-hidden');
 
   const breedId = event.currentTarget.value;

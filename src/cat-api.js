@@ -5,7 +5,7 @@ const BREEDS_URL = '/breeds';
 const IMAGES_URL = '/images/search';
 const API_KEY =
   'live_AInBiZNMGTspPJow6eVuTFhnUUqlCCv9K3ia4eMvA7myxAvI8V3zJkjb4kF1xzmt';
-
+let page = 1;
 axios.defaults.headers.common['x-api-key'] =
   'live_NWEy6xxwLGvFpS0aqUewOl5VMamxgNKtUChLGZX6T3mgkKvBlzqLkOd3CbEfq6Bv';
 
